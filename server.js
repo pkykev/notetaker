@@ -23,16 +23,6 @@ function overForm(note){
 
 
 
-app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/notes.html'))
-});
-
-
-app.get('/api/notes', (req, res) => {
-  console.log(noteData)
-  res.json(noteData)
-});
-
 
 app.post('/api/notes', (req, res) => {
   console.log(req.body)
@@ -57,7 +47,7 @@ app.post('/api/notes', (req, res) => {
         );
       }
     });
-    res.status(201).json(noteData)
+    res.status(201)
   }
 })
 
@@ -68,10 +58,8 @@ app.delete('/api/notes/:id', (req,res) => {
     } else {
       const parsedNote = JSON.parse(currNote);
       const newparsedNote = parsedNote.filter(function(note){
-        console.log(note.id)
         return note.id != req.params.id
       })
-      console.log(newparsedNote)
       fs.writeFile('./db/db.json', JSON.stringify(newparsedNote, null, 4),
         //callback with arrow function for error handling
         (writeError) => writeError ? console.error(writeError) : console.info('Success')
@@ -81,6 +69,22 @@ app.delete('/api/notes/:id', (req,res) => {
    
 })
 
+
+app.get('/api/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, './db/db.json'))
+  // fs.readFile('./db/db.json', 'utf8', (err, currNote) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     const parsedNote = JSON.parse(currNote);
+  //     res.json(currNote)
+  //   }
+  // })
+});
+
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/notes.html'))
+});
 
 
 

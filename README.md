@@ -1,5 +1,7 @@
 # SVG Logo Maker
 
+heroku logs --app patrick-notetaker-demo --tail
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
