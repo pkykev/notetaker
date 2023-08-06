@@ -38,8 +38,8 @@ app.post('/api/notes', (req, res) => {
         );
       }
     });
-    res.status(201)
   }
+  res.status(201).json('Note added')
 })
 
 app.delete('/api/notes/:id', (req,res) => {
