@@ -1,4 +1,3 @@
-const noteData = require('./db/db.json');
 const fs = require('fs');
 const express = require('express');
 const uuid = require('./helper/uuid')
@@ -15,13 +14,6 @@ app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
 );
 
-//not for production, only for testing
-function overForm(note){
-  if (note.id != req.params.id)
-  return false
-}
-
-
 
 
 app.post('/api/notes', (req, res) => {
@@ -33,7 +25,6 @@ app.post('/api/notes', (req, res) => {
       text,
       //calls the import function
       id: uuid(),
-      //need to add unique ID here
     };
     fs.readFile('./db/db.json', 'utf8', (err, currNote) => {
       if (err) {
@@ -66,25 +57,21 @@ app.delete('/api/notes/:id', (req,res) => {
       );
     }
   });
-   
+   res.json('Note deleted')
 })
 
 
 app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './db/db.json'))
-  // fs.readFile('./db/db.json', 'utf8', (err, currNote) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     const parsedNote = JSON.parse(currNote);
-  //     res.json(currNote)
-  //   }
-  // })
 });
 
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 });
+
+
+//this is the terminal syntax for heroku trouble shooting
+//heroku logs --app patrick-notetaker-demo --tail
 
 
 

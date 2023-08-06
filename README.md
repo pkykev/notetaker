@@ -1,6 +1,4 @@
-# SVG Logo Maker
-
-heroku logs --app patrick-notetaker-demo --tail
+# Express.js Notetaker
 
 ## License
 
@@ -18,21 +16,15 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
   * [Questions](#questions)
   * [How to Contribute](#how-to-contribute)
 ## What my project aims to do
-This project is designed to streamline the process of creating a logo for future projects and websites.
+This project is designed to streamline the process of creating notes to help organize and keep track of daily things that I need to complete.
 
   ## Installation instructions 
   ### Using npm, inquirer and SVG 
-  1. In the terminal run npm init -y 
-  2. npm i inquirer@8.2.4
-  3. npm i jest
+  1. In the terminal run npm i to install all dependencies.
 
 ## What my project is used for
-Generate logo for projects and repos
-
-  ### Test instructions and video
-  1. run npm test
-  2. <a href=https://drive.google.com/file/d/1U5XuoYh8fjST3lyj6eUpotxRBv2EQfJ7/view>How to video</a>
-
+Keep a record of notes for organization
+  
   ### How to contribute
   I will be working on this myself to further my coding skills, no contributions please.
 
