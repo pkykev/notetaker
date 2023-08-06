@@ -4,7 +4,7 @@ const express = require('express');
 const uuid = require('./helper/uuid')
 //this helps with routing -- LOOK UP
 const path = require('path');
-const PORT = process.env.HOST || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
@@ -15,6 +15,7 @@ app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
 );
 
+//not for production, only for testing
 function overForm(note){
   if (note.id != req.params.id)
   return false
