@@ -4,7 +4,7 @@ const express = require('express');
 const uuid = require('./helper/uuid')
 //this helps with routing -- LOOK UP
 const path = require('path');
-const PORT = 3001;
+const PORT = process.env.HOST || 3001;
 const app = express();
 
 app.use(express.json());
