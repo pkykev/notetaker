@@ -23,7 +23,7 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      //calls the import function
+      //calls the imported function for unique ID
       id: uuid(),
     };
     fs.readFile('./db/db.json', 'utf8', (err, currNote) => {
@@ -42,13 +42,14 @@ app.post('/api/notes', (req, res) => {
   res.status(201).json('Note added')
 })
 
-app.delete('/api/notes/:id', (req,res) => {
+app.delete('/api/notes/:id', (req, res) => {
   fs.readFile('./db/db.json', 'utf8', (err, currNote) => {
     if (err) {
       console.log(err);
     } else {
       const parsedNote = JSON.parse(currNote);
-      const newparsedNote = parsedNote.filter(function(note){
+      const newparsedNote = parsedNote.filter(function (note) {
+        //returns an array of all objects that dont have a matching ID
         return note.id != req.params.id
       })
       fs.writeFile('./db/db.json', JSON.stringify(newparsedNote, null, 4),
@@ -57,7 +58,7 @@ app.delete('/api/notes/:id', (req,res) => {
       );
     }
   });
-   res.json('Note deleted')
+  res.status(201).json('Note deleted')
 })
 
 
